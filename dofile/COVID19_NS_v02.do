@@ -69,12 +69,13 @@ collapse (sum) confirmed deaths recovered, by(date)
 
 use covid19_date , clear
 *India Specific 
+/*
 preserve
 keep if countryregion =="India"
 generate newcases = D.confirmed
 tsline confirmed, title(India Confirmed COVID-19 Cases till "`today'" )
 restore
-
+*/
 *agrregate data of India 
 preserve
 keep if countryregion=="India"
