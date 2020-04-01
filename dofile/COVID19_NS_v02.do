@@ -7,7 +7,8 @@ set more off
 numlabel, add
 
 *defining directory  , you need to change according to your computer
-local datadir "C:\Users\PMA2020\Desktop\delete\Test\COVID19"
+local datadir "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\rawdata"
+local outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
 
 cd "`datadir'"
 
