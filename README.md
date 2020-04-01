@@ -6,4 +6,4 @@ I took dataset from https://github.com/CSSEGISandData/COVID-19 from JHU updates.
 
 India wise cases 
 
-![India COVID Cases](https://github.com/iamnarendrasingh/COVID19/tree/master/graphs/India_01April2020.png)
+![India COVID Cases](https://github.com/iamnarendrasingh/COVID19/blob/master/graphs/India_01April2020.png)
