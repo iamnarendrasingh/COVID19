@@ -49,7 +49,9 @@ forvalues month = 1/12 {
    }
 }
 
-save COVID19_github.dta
+save COVID19_github.dta , replace
+
+cd "`outputdir'"
 
 generate date = date(tempdate, "MDY")
 format date %tdNN/DD/CCYY
@@ -86,28 +88,28 @@ generate newcases = D.confirmed
 tsline confirmed, title(India Confirmed COVID-19 Cases)
 
 *change directory accoring to your computer
-graph save Graph "C:\Users\PMA2020\Desktop\delete\Test\COVID19\India_01April2020.gph"
-graph export "C:\Users\PMA2020\Desktop\delete\Test\COVID19\India_01April2020.png", as(png) replace
+graph save Graph "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_01April2020.gph" , replace
+graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_01April2020.png", as(png) replace
 *till here
 
 restore
 
 
 *compare India , USA , Italy 
- 
+preserve
 keep if inlist(countryregion, "India", "US", "Italy")
 collapse (sum) confirmed deaths recovered, by(date countryregion)
 encode countryregion, gen(country)
 label list country
-*label need to assign India 1 , Italy 2 , US 3 . 
+* label need to assign India 1 , Italy 2 , US 3 . 
 * If you are using this for any other country then change varibale accordingly
 * and check them 
 tsset country date, daily
-save covide19_long.dta , replace 
+save covid19_long.dta , replace 
 
 
-use covid19_long , clear
-preserve
+use covid19_long.dta , clear
+
 
 keep date country confirmed deaths recovered
 reshape wide confirmed deaths recovered, i(date) j(country)
@@ -143,13 +145,13 @@ twoway (line india_d date) ///
 	   
 twoway (line india_d date),  title(Death COVID-19)
 *change directory 
-graph export "C:\Users\PMA2020\Desktop\delete\Test\COVID19\India_death.png", as(png) replace
+graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_death.png", as(png) replace
 twoway (line india_c date),  title(Confirmed Case COVID-19)
 *change directory
-graph export "C:\Users\PMA2020\Desktop\delete\Test\COVID19\India_case.png", as(png) replace
+graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_case.png", as(png) replace
 twoway (line india_r date),  title(Recovered COVID-19)
 *change directory
-graph export "C:\Users\PMA2020\Desktop\delete\Test\COVID19\India_recovered.png", as(png) replace
+graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_recovered.png", as(png) replace
 
 	   
 	   
