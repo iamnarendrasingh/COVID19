@@ -12,6 +12,17 @@ local outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
 
 cd "`datadir'"
 
+
+*set date 
+
+local today=c(current_date)
+local c_today= "`today'"
+local date=subinstr("`c_today'", " ", "",.)
+di "`date'"
+global date=subinstr("`c_today'", " ", "",.)
+
+*date code ends here
+
 local github_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/"
 *defining directory ends Here
 
