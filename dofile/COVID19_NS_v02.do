@@ -140,16 +140,17 @@ label var usa_r "USA recovered"
 twoway (line india_d date) ///
        (line italy_d date) ///
        (line usa_d date)   ///
-       , title(Death COVID-19 Cases)
+       , title(Death COVID-19 Cases in India Italy USA )
 	   
+graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_Italy_USA_death_compare.png", as(png) replace	   
 	   
-twoway (line india_d date),  title(Death COVID-19)
+twoway (line india_d date),  title(Death Case in India of COVID-19 )
 *change directory 
 graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_death.png", as(png) replace
-twoway (line india_c date),  title(Confirmed Case COVID-19)
+twoway (line india_c date),  title(Confirmed Case in India of COVID-19 )
 *change directory
 graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_case.png", as(png) replace
-twoway (line india_r date),  title(Recovered COVID-19)
+twoway (line india_r date),  title(Recovered Case in India of COVID-19 )
 *change directory
 graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_recovered.png", as(png) replace
 
