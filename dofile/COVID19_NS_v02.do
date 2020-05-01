@@ -8,7 +8,7 @@ numlabel, add
 
 *defining directory  , you need to change according to your computer
 local datadir "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\rawdata"
-local outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
+global outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
 
 cd "`datadir'"
 
@@ -62,12 +62,13 @@ forvalues month = 1/12 {
 
 save COVID19_github.dta , replace
 
-cd "`outputdir'"
+cd $outputdir
 
 generate date = date(tempdate, "MDY")
+
 format date %tdNN/DD/CCYY
 
-save covid19_"$date".dta, replace
+save covid19_$date.dta, replace
 
 
 
@@ -82,6 +83,7 @@ collapse (sum) confirmed deaths recovered, by(date)
 *India Specific 
 cd "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dofile"
 run "covid19_India_NS_v01.do"
+
 
 /*
 preserve
