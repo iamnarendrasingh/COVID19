@@ -67,7 +67,7 @@ cd "`outputdir'"
 generate date = date(tempdate, "MDY")
 format date %tdNN/DD/CCYY
 
-save covid19_date, replace
+save covid19_"$date".dta, replace
 
 
 
@@ -79,9 +79,10 @@ use covid19_date , clear
 collapse (sum) confirmed deaths recovered, by(date)
 */
 
-
-use covid19_date , clear
 *India Specific 
+cd "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dofile"
+run "covid19_India_NS_v01.do"
+
 /*
 preserve
 keep if countryregion =="India"
