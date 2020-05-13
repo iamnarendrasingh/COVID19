@@ -68,7 +68,7 @@ generate date = date(tempdate, "MDY")
 
 format date %tdNN/DD/CCYY
 
-save covid19_$date.dta, replace
+save COVID19_$date.dta, replace
 
 
 
@@ -92,9 +92,12 @@ generate newcases = D.confirmed
 tsline confirmed, title(India Confirmed COVID-19 Cases till "`today'" )
 restore
 */
+
 *agrregate data of India 
-preserve
+
+/*
 keep if countryregion=="India"
+
 collapse (sum) confirmed deaths recovered, by(date)
 format %8.0fc confirmed deaths recovered
 tsset date, daily
@@ -105,8 +108,6 @@ tsline confirmed, title(India Confirmed COVID-19 Cases)
 graph save Graph "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_01April2020.gph" , replace
 graph export "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\graphs\India_01April2020.png", as(png) replace
 *till here
-
-restore
 
 
 *compare India , USA , Italy 
@@ -119,10 +120,10 @@ label list country
 * If you are using this for any other country then change varibale accordingly
 * and check them 
 tsset country date, daily
-save covid19_long.dta , replace 
+save COVID19_long.dta , replace 
 
 
-use covid19_long.dta , clear
+use COVID19_long.dta , clear
 
 
 keep date country confirmed deaths recovered

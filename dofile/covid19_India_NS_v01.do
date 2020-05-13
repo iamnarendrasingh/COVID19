@@ -8,7 +8,7 @@ keep if countryregion == "India"
 generate date_india = date(tempdate, "MDY")
 format date_india %tdNN/DD/CCYY
 
-save covid19_datechange.dta, replace
+save COVID19_datechange.dta, replace
 
 collapse (sum) confirmed deaths recovered, by(date_india)
 
@@ -23,16 +23,16 @@ generate newcases = D.confirmed
  
 tsline confirmed, title(India Confirmed COVID-19 Cases) 
 
-graph save Graph India_confirmed_case_$date.gph , replace
-save covid19_India_$date.dta , replace 
+graph save Graph COVID19_India_confirmed_case_$date.gph , replace
+save COVID19_India_$date.dta , replace 
 restore
 
 *lockdown trend
-use covid19_India_$date.dta 
+use COVID19_India_$date.dta 
 
 gen lockdown = 1 if inrange(date, mdy(3,25,2020), mdy(4,14,2020))
 replace lockdown = 2 if inrange(date, mdy(4,15,2020), mdy(5,3,2020))
 replace lockdown = 3 if inrange(date, mdy(5,4,2020), mdy(5,10,2020))
 
 
-save covid19_India_lockdown.dta, replace
+save COVID19_India_lockdown.dta, replace
