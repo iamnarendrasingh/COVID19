@@ -10,6 +10,15 @@ numlabel, add
 local datadir "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\rawdata"
 global outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
 
+cd $outputdir
+
+*Create folder called Archived_Data in the Listing Folder
+* Zip all of the old versions of the datasets.  Updates the archive rather than replacing so all old versions are still in archive
+capture zipfile COVID19*, saving (Archived_Data/ArchivedListing_$date.zip, replace)
+
+*Delete old versions.  Old version still saved in ArchivedData.zip
+capture shell erase COVID19*
+
 cd "`datadir'"
 
 
