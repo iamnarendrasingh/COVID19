@@ -89,6 +89,7 @@ use covid19_date , clear
 collapse (sum) confirmed deaths recovered, by(date)
 */
 
+/*
 *India Specific 
 cd "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dofile"
 run "covid19_India_NS_v01.do"
