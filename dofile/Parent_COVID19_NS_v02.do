@@ -9,6 +9,7 @@ numlabel, add
 *defining directory  , you need to change according to your computer
 local datadir "E:\Self_GitKraken\Working_Repo_GitHub\India-COVID19-Study\dataset\rawdata"
 global outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\India-COVID19-Study\dataset\output"
+global dofiledir "E:\Self_GitKraken\Working_Repo_GitHub\India-COVID19-Study\dofile"
 
 cd $outputdir
 /*
@@ -93,9 +94,9 @@ use covid19_date , clear
 collapse (sum) confirmed deaths recovered, by(date)
 */
 
-/*
+
 *India Specific 
-cd "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dofile"
+cd "$dofiledir"
 run "covid19_India_NS_v01.do"
 
 

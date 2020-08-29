@@ -1,14 +1,14 @@
 
 cd  $outputdir
 
-use covid19_$date.dta
+use India_COVID19_$date.dta
 preserve
 keep if countryregion == "India"
 *days since first covid patient found 
 generate date_india = date(tempdate, "MDY")
 format date_india %tdNN/DD/CCYY
 
-save COVID19_datechange.dta, replace
+save India_COVID19_datechange.dta, replace
 
 collapse (sum) confirmed deaths recovered, by(date_india)
 
