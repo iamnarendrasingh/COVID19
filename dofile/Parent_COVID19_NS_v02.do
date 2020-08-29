@@ -69,16 +69,19 @@ forvalues month = 1/12 {
    }
 }
 
-save COVID19_github.dta , replace
+save India_COVID19_github.dta , replace
 
+*datasave for India only
 cd $outputdir
 
 generate date = date(tempdate, "MDY")
 
 format date %tdNN/DD/CCYY
+keep if countryregion == "India"
+save India_COVID19_$date.dta, replace
 
-save COVID19_$date.dta, replace
-
+*drop other dataset 
+cd "`datadir'" 
 
 
 *Uncomment only if you want to check total cases of COVID 
