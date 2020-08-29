@@ -7,18 +7,18 @@ set more off
 numlabel, add
 
 *defining directory  , you need to change according to your computer
-local datadir "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\rawdata"
-global outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\COVID19\dataset\output"
+local datadir "E:\Self_GitKraken\Working_Repo_GitHub\India-COVID19-Study\dataset\rawdata"
+global outputdir  "E:\Self_GitKraken\Working_Repo_GitHub\India-COVID19-Study\dataset\output"
 
 cd $outputdir
-
+/*
 *Create folder called Archived_Data in the Listing Folder
 * Zip all of the old versions of the datasets.  Updates the archive rather than replacing so all old versions are still in archive
-capture zipfile COVID19*, saving (Archived_Data/ArchivedListing_$date.zip, replace)
+capture zipfile COVID19*, saving (Archived_Data/ArchivedIndiaCovid_$date.zip, replace)
 
 *Delete old versions.  Old version still saved in ArchivedData.zip
 capture shell erase COVID19*
-
+*/
 cd "`datadir'"
 
 
@@ -82,6 +82,7 @@ save India_COVID19_$date.dta, replace
 
 *drop other dataset 
 cd "`datadir'" 
+!del *.dta
 
 
 *Uncomment only if you want to check total cases of COVID 
