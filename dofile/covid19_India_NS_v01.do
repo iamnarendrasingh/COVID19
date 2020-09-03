@@ -2,7 +2,12 @@
 cd  $outputdir
 
 use India_COVID19_$date.dta
-preserve
+
+capture zipfile COVID19*, saving (Archived_Data/ArchivedIndiaCovid_$date.zip, replace)
+
+*Delete old versions.  Old version still saved in ArchivedData.zip
+capture shell erase COVID19*
+
 keep if countryregion == "India"
 *days since first covid patient found 
 generate date_india = date(tempdate, "MDY")
@@ -24,15 +29,6 @@ generate newcases = D.confirmed
 tsline confirmed, title(India Confirmed COVID-19 Cases) 
 
 graph save Graph COVID19_India_confirmed_case_$date.gph , replace
+graph export COVID19_India_confirmed_case_$date.png, replace
+
 save COVID19_India_$date.dta , replace 
-restore
-
-*lockdown trend
-use COVID19_India_$date.dta 
-
-gen lockdown = 1 if inrange(date, mdy(3,25,2020), mdy(4,14,2020))
-replace lockdown = 2 if inrange(date, mdy(4,15,2020), mdy(5,3,2020))
-replace lockdown = 3 if inrange(date, mdy(5,4,2020), mdy(5,16,2020))
-
-
-save COVID19_India_lockdown.dta, replace
